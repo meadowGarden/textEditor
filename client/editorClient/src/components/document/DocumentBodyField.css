@@ -1,0 +1,23 @@
+.documentBodyField {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5em;
+
+  text-align: center;
+
+  padding: 0.5em;
+  border: none;
+  margin: 0.5em;
+}
+
+.editorTextArea {
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
