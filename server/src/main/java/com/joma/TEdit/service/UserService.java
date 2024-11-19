@@ -1,16 +1,18 @@
 package com.joma.TEdit.service;
 
 import com.joma.TEdit.dto.AppMapper;
-import com.joma.TEdit.response.user.UsersListResponse;
 import com.joma.TEdit.dto.user.UserDTO;
-import com.joma.TEdit.response.user.UserResponse;
 import com.joma.TEdit.entity.User;
 import com.joma.TEdit.repository.UserRepository;
+import com.joma.TEdit.request.UserListRequest;
+import com.joma.TEdit.response.user.UserResponse;
+import com.joma.TEdit.response.user.UsersListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -33,11 +35,26 @@ public class UserService {
         return AppMapper.getUserResponseFromUser(user);
     }
 
-    public UsersListResponse getAllUsers() {
-        final List<User> usersRaw = userRepository.findAll();
-        final List<UserResponse> users = usersRaw.stream()
-                .map(AppMapper::getUserResponseFromUser)
-                .collect(Collectors.toList());
+    public UsersListResponse getAllUsers(UserListRequest request) {
+        final Sort.Direction direction = request.isSortAsc() ? Sort.Direction.ASC : Sort.Direction.DESC;
+        final Sort sort = Sort.by(direction, request.getSortBy());
+
+        final int pageNumber = request.getPageNumber() - 1;
+        final int pageSize = request.getPageSize();
+        final String firstNameContains = request.getFirstNameContains();
+        final String lastNameContains = request.getLastNameContains();
+
+        final Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        if ((firstNameContains == null || firstNameContains.isEmpty()) &&
+                (lastNameContains == null || lastNameContains.isEmpty())) {
+            final Page<User> usersRaw = userRepository.findAll(pageable);
+            final Page<UserResponse> users = usersRaw.map(AppMapper::getUserResponseFromUser);
+            return new UsersListResponse(users);
+        }
+        final Page<User> usersRaw = userRepository
+                .findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(
+                        pageable, firstNameContains, lastNameContains);
+        final Page<UserResponse> users = usersRaw.map(AppMapper::getUserResponseFromUser);
         return new UsersListResponse(users);
     }
 

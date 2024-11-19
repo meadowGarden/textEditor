@@ -1,15 +1,15 @@
 package com.joma.TEdit.response.user;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public class UsersListResponse {
-    private final List<UserResponse> users;
+    private final Page<UserResponse> users;
 
-    public UsersListResponse(List<UserResponse> users) {
+    public UsersListResponse(Page<UserResponse> users) {
         this.users = users;
     }
 
-    public List<UserResponse> getUsers() {
+    public Page<UserResponse> getUsers() {
         return users;
     }
 }

@@ -1,7 +1,7 @@
-function DocumentMenuTab() {
+function DocumentMenuTab({ handleSave }) {
   return (
     <>
-      <div>document menu tab</div>
+      <button onClick={handleSave}>save document</button>
     </>
   );
 }

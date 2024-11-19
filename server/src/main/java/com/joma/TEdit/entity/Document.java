@@ -17,7 +17,7 @@ public class Document {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "body")
+    @Column(name = "body", columnDefinition = "LONGTEXT")
     private String body;
 
     @ManyToOne()

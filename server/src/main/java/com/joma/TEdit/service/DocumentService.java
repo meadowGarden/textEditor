@@ -46,9 +46,17 @@ public class DocumentService {
 
         final int pageNumber = request.getPageNumber() - 1;
         final int pageSize = request.getPageSize();
+        final String titleContains = request.getTitleContains();
 
         final Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        final Page<Document> pageRaw = documentRepository.findAll(pageable);
+        if (titleContains == null || titleContains.isEmpty()) {
+            final Page<Document> pageRaw = documentRepository.findAll(pageable);
+            final Page<DocumentResponse> page = pageRaw.map(AppMapper::getDocumentResponseFromDocument);
+            return new DocumentsListResponse(page, HttpStatus.OK);
+        }
+
+        final Page<Document> pageRaw = documentRepository
+                .findByTitleContainingIgnoreCase(pageable, titleContains);
         final Page<DocumentResponse> page = pageRaw.map(AppMapper::getDocumentResponseFromDocument);
         return new DocumentsListResponse(page, HttpStatus.OK);
     }

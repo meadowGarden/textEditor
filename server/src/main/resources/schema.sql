@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS editor.users (
 CREATE TABLE IF NOT EXISTS editor.document (
     id INTEGER NOT NULL AUTO_INCREMENT,
     title VARCHAR(255),
-    body TEXT,
+    body LONGTEXT,
     user_id INTEGER,
     created_at TIMESTAMP,
     modified_at TIMESTAMP,

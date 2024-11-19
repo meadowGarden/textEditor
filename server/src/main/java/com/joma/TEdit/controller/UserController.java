@@ -1,6 +1,7 @@
 package com.joma.TEdit.controller;
 
 import com.joma.TEdit.dto.user.UserDTO;
+import com.joma.TEdit.request.UserListRequest;
 import com.joma.TEdit.response.user.UserResponse;
 import com.joma.TEdit.response.user.UsersListResponse;
 import com.joma.TEdit.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/users")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
     private final UserService userService;
 
@@ -29,8 +31,17 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers() {
-        final UsersListResponse response = userService.getAllUsers();
+    public ResponseEntity<?> getAllUsers(
+            @RequestParam(defaultValue = "1") int pageNumber,
+            @RequestParam(defaultValue = "5") int pageSize,
+            @RequestParam(required = false) String firstNameContains,
+            @RequestParam(required = false) String lastNameContains,
+            @RequestParam(defaultValue = "lastName") String sortBy,
+            @RequestParam(defaultValue = "true") boolean sortAsc
+            ) {
+        final UserListRequest request = new UserListRequest(
+                pageNumber, pageSize,firstNameContains, lastNameContains, sortBy, sortAsc);
+        final UsersListResponse response = userService.getAllUsers(request);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(response.getUsers());

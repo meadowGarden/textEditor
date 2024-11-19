@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DocumentRepository extends JpaRepository<Document, Integer> {
     Page<Document> findByUserIdAndTitleContainingIgnoreCase(Pageable pageable, int id, String titleContains);
+
+    Page<Document> findByTitleContainingIgnoreCase(Pageable pageable, String titleContains);
 }
