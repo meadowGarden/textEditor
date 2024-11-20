@@ -20,4 +20,5 @@
   resize: vertical;
   border: 1px solid #ccc;
   border-radius: 4px;
+  overflow-y: auto;
 }

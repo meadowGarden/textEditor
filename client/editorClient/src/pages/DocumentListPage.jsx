@@ -54,12 +54,17 @@ function DocumentListPage() {
       .catch((error) => console.log(error));
   }, [paginationSettings, setDocuments]);
 
+  const handleClick = (document) => {
+    const id = document.id;
+    navigate(`/documents/${id}`);
+  };
+
   const documentsToDisplay = documents.map((document) => {
     return (
       <DocumentListElement
         key={document.id}
         document={document}
-        navigate={navigate}
+        handleClick={handleClick}
       />
     );
   });
