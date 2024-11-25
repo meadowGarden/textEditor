@@ -1,13 +1,8 @@
 import { useForm } from "react-hook-form";
-import "./DocumentBodyField.css";
+import "../../styles/ComponentDesign.css";
 
 const DocumentBodyField = ({ documentBody }) => {
   const { register } = useForm();
-
-  const documentSymbols = documentBody?.split();
-  const textToDisplay = documentSymbols?.map((char) => {
-    return <span key={char}>{char}</span>;
-  });
 
   return (
     <>
@@ -19,7 +14,6 @@ const DocumentBodyField = ({ documentBody }) => {
           rows={10}
           placeholder={documentBody}
         />
-        {textToDisplay}
       </form>
     </>
   );

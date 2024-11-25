@@ -1,13 +1,18 @@
 :root {
   --standard-text-color: black;
 
-  --basic-button-backgroung-color-hover: #FFFFA2;
-  --basic-button-backgroung-color: #FAF884;
+  --header-text-color:#444444;
+
+  --basic-button-backgroung-color-hover: #ffffa2;
+  --basic-button-backgroung-color: #faf884;
+  
+
+  --default-background-color: #6f89a2;
+  --default-list-element-color-hover: #cfe2f3;
+  --default-list-element-color: #9fc5e8;
+
+  background-color: var(--default-background-color);
 }
-
-
-
-
 
 /* #root {
   max-width: 1280px;

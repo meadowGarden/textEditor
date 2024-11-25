@@ -1,10 +1,15 @@
-const DocumentListElement = ({ document, handleClick }) => {
+import "../../styles/ComponentDesign.css";
 
-  const {id, title, userID, createdAt, modifiedAt} = document;
+const DocumentListElement = ({ document, handleClick }) => {
+  const { id, title, userID, createdAt, modifiedAt } = document;
 
   return (
-    <div className="documentListElement" onClick={() => handleClick(document)}>
-      {id} {title} {userID} {createdAt} {modifiedAt}
+    <div className="listElementDocument" onClick={() => handleClick(document)}>
+      <span>{id}</span>
+      <span>{title}</span>
+      <span>{userID}</span>
+      <span>{createdAt}</span>
+      <span>{modifiedAt}</span>
     </div>
   );
 };

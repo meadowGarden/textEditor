@@ -1,7 +1,12 @@
 function DocumentMenuTab({ handleSave }) {
   return (
     <>
-      <button onClick={handleSave}>save document</button>
+      <div className="menuButtonsContainer">
+        <button onClick={handleSave}>save document</button>
+        <button onClick={handleSave}>save document</button>
+        <button onClick={handleSave}>save document</button>
+        <button onClick={handleSave}>save document</button>
+      </div>
     </>
   );
 }

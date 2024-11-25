@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import DocumentListElement from "../components/document/DocumentListElement";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import "../styles/PageDesign.css";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
-  elementCount: 2,
+  pageSize: 10,
   titleContains: "",
   sortBy: "id",
   sortAsc: true,
@@ -27,7 +28,7 @@ function DocumentListPage() {
   );
 
   const pageNumber = watch("pageNumber");
-  const elementCount = watch("elementCount");
+  const pageSize = watch("pageSize");
   const titleContains = watch("titleContains");
   const sortBy = watch("sortBy");
   const sortAsc = watch("sortAsc");
@@ -36,12 +37,12 @@ function DocumentListPage() {
     setPaginationSettings((previousSettings) => ({
       ...previousSettings,
       pageNumber: pageNumber,
-      elementCount: elementCount,
+      pageSize: pageSize,
       titleContains: titleContains,
       sortBy: sortBy,
       sortAsc: sortAsc,
     }));
-  }, [pageNumber, elementCount, titleContains, sortBy, sortAsc]);
+  }, [pageNumber, pageSize, titleContains, sortBy, sortAsc]);
 
   useEffect(() => {
     axios
@@ -71,14 +72,23 @@ function DocumentListPage() {
 
   return (
     <>
-      <form>
-        <section>
+      <form className="formHeaderDocument">
+        <section className="formHeaderElement">
           <input {...register("titleContains")} placeholder="title contains" />
+          <input {...register("pageNumber")} placeholder="page number" />
+          <input {...register("pageSize")} placeholder="page size" />
         </section>
       </form>
-
-      <div>documents to display</div>
-      {documentsToDisplay}
+      <div className="listOfElements">
+        <div className="listOfElementsHeader">
+          <span className="headerElement">id</span>
+          <span className="headerElement">title</span>
+          <span className="headerElement">user id</span>
+          <span className="headerElement">created at</span>
+          <span className="headerElement">changed at</span>
+        </div>
+      </div>
+      <div className="listOfElements">{documentsToDisplay}</div>
     </>
   );
 }

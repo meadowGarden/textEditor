@@ -1,0 +1,86 @@
+
+.menuButtonsContainer {
+  padding: 3em 3em 0em 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2em;
+}
+
+.documentBodyField {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5em;
+
+  text-align: center;
+
+  padding: 0.5em;
+  border: none;
+  margin: 0.5em;
+}
+
+.editorTextArea {
+  grid-row: 2;
+  /* width: 100%; */
+  /* height: 100%; */
+  /* padding: 10px; */
+  /* font-size: 1rem; */
+  /* line-height: 1.5; */
+  /* resize: vertical; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 4px; */
+  /* overflow-y: auto; */
+}
+
+
+
+.listOfElements {
+  padding: 1em 2em 0em 2em;
+}
+.listOfElementsHeader {
+  display: grid;
+  grid-template-columns: 0.5fr 5fr 1fr 2fr 2fr;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.listHeaderDocument {
+  display: grid;
+  grid-template-columns: 0.5fr 5fr 1fr 2fr 2fr;
+  padding: 0.5em 1em 0.5em 1em;
+}
+.listElementDocument {
+  display: grid;
+  grid-template-columns: 0.5fr 5fr 1fr 2fr 2fr;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: var(--default-list-element-color);
+}
+.listElementDocument:hover {
+  cursor: pointer;
+  background-color: var(--default-list-element-color-hover);
+}
+
+.formHeaderUser {
+  padding: 1em 1em 1em 1em;
+  background-color: var(--default-background-color);
+}
+.formHeaderElement {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.formHeaderDocument {
+  padding: 2em 2em 1em 2em;
+  background-color: var(--default-background-color);
+}
+.formHeaderElement {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.headerElement {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--header-text-color);
+  text-align: center;
+}
