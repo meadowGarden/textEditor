@@ -72,8 +72,8 @@ function DocumentListPage() {
 
   return (
     <>
-      <form className="formHeaderDocument">
-        <section className="formHeaderElement">
+      <form className="formHeader">
+        <section className="formHeaderElementDocument">
           <input {...register("titleContains")} placeholder="title contains" />
           <input {...register("pageNumber")} placeholder="page number" />
           <input {...register("pageSize")} placeholder="page size" />

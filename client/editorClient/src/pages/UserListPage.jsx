@@ -2,10 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import UserListElement from "../components/user/UserListElement";
+import BasicButton from "../components/BasicButton";
+import "../styles/PageDesign.css";
+import InModal from "../components/InModal";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
-  elementCount: 2,
+  elementCount: 10,
   firstNameContains: "",
   lastNameContains: "",
   sortBy: "id",
@@ -14,6 +17,7 @@ const defaultPaginationSettings = {
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const {
     register,
@@ -66,23 +70,41 @@ function UserListPage() {
     return <UserListElement key={user.id} user={user} />;
   });
 
+  const addUser = () => {
+    axios
+      .post(`http://localhost:8080/api/users`)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
+  const handleAddUserButtonClick = () => {
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <>
-      <form>
-        <section>
-          <input
-            {...register("firstNameContains")}
-            placeholder="first name contains"
-          />
-        </section>
-        <section>
-          <input
-            {...register("lastNameContains")}
-            placeholder="first name contains"
-          />
-        </section>
-      </form>
-      {usersToDisplay}
+      <div className="userControlPanel">
+        <form className="formHeader">
+          <section className="formHeaderElementUser">
+            <input
+              {...register("firstNameContains")}
+              placeholder="first name contains"
+            />
+            <input
+              {...register("lastNameContains")}
+              placeholder="last name contains"
+            />
+          </section>
+        </form>
+        <BasicButton
+          buttonLabel={"add user"}
+          action={handleAddUserButtonClick}
+        />
+      </div>
+      <div className="listOfElements">{usersToDisplay}</div>
+      <div>
+        <InModal>mau</InModal>
+      </div>
     </>
   );
 }

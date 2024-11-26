@@ -2,38 +2,52 @@ import { useEffect, useState } from "react";
 import DocumentBodyField from "../components/document/DocumentBodyField";
 import DocumentMenuTab from "../components/document/DocumentMenuTab";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function DocumentPage() {
   const { documentID } = useParams();
   const [document, setDocument] = useState();
-  const title = document?.title;
-  const userID = document?.userID;
-  const createdAt = document?.createdAt;
-  const modifiedAt = document?.modifiedAt;
-  const [documentBody, setDocumentBody] = useState(document?.body);
+  const [updatedDocument, setUpdatedDocument] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/documents/${documentID}`)
       .then((response) => {
         setDocument(response.data);
-        setDocumentBody(response.data.body);
+        setUpdatedDocument(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [documentID]);
 
   const handleSave = () => {
     axios
-      .put(`http://localhost:8080/api/documents/${documentID}`, document)
+      .put(`http://localhost:8080/api/documents/${documentID}`, updatedDocument)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
 
+  const handleDelete = () => {
+    axios
+      .delete(`http://localhost:8080/api/documents/${documentID}`)
+      .then(() => navigate(`/documents`))
+      .catch((error) => console.log(error));
+  };
+
+  const handleReturn = () => {
+    console.log("returning");
+    navigate(`/documents`);
+  };
+
   return (
     <>
-      <DocumentMenuTab documentBody={documentBody} handleSave={handleSave} />
-      <DocumentBodyField documentBody={documentBody} />
+      <DocumentMenuTab
+        document={updatedDocument}
+        handleSave={handleSave}
+        handleDelete={handleDelete}
+        handleReturn={handleReturn}
+      />
+      <DocumentBodyField document={document} setDocument={setUpdatedDocument} />
     </>
   );
 }

@@ -5,6 +5,7 @@ import DocumentPage from "./pages/DocumentPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import DocumentListPage from "./pages/DocumentListPage";
 import UserListPage from "./pages/UserListPage";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

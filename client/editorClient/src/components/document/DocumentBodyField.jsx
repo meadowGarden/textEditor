@@ -1,21 +1,31 @@
 import { useForm } from "react-hook-form";
 import "../../styles/ComponentDesign.css";
+import { useEffect, useState } from "react";
 
-const DocumentBodyField = ({ documentBody }) => {
-  const { register } = useForm();
+const DocumentBodyField = ({ document, setDocument }) => {
+  const [documentBody, setDocumentBody] = useState(document?.body);
+  useEffect(() => {
+    setDocumentBody(document?.body);
+  }, [document]);
+
+  const handleChange = (event) => {
+    const newBody = event.target.value;
+    setDocumentBody(newBody);
+    setDocument((prev) => ({
+      ...prev,
+      body: newBody,
+    }));
+  };
 
   return (
-    <>
-      <form className="documentBodyField">
-        <input
-          className="editorTextArea"
-          type="textarea"
-          {...register("documentBody")}
-          rows={10}
-          placeholder={documentBody}
-        />
-      </form>
-    </>
+    <form id="documentBodyForm" className="documentBodyField">
+      <textarea
+        defaultValue={documentBody}
+        rows={30}
+        onChange={handleChange}
+        className="editorTextArea"
+      />
+    </form>
   );
 };
 
