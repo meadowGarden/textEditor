@@ -1,5 +1,5 @@
 .menuButtonsContainer {
-  padding: 3em 3em 0em 3em;
+  padding: 0em 3em 0em 3em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2em;
@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding: 2em;
+  padding: 1em;
 }
 
 .editorTextArea {
@@ -25,6 +25,7 @@
 }
 
 .listOfElements {
+  background-color: var(--default-background-color);
   padding: 1em 2em 0em 2em;
 }
 .listOfElementsHeader {
@@ -103,7 +104,13 @@
 }
 
 .userControlPanel {
+  background-color: var(--default-background-color);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
+}
+
+.basicPageContainer {
+  padding: 3em;
+  background-color: var(--default-background-color);
 }

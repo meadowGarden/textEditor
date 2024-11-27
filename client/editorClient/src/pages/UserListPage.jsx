@@ -5,10 +5,11 @@ import UserListElement from "../components/user/UserListElement";
 import BasicButton from "../components/BasicButton";
 import "../styles/PageDesign.css";
 import InModal from "../components/InModal";
+import UserInfoCard from "../components/user/UserInfoCard";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
-  elementCount: 10,
+  pageSize: 10,
   firstNameContains: "",
   lastNameContains: "",
   sortBy: "id",
@@ -30,7 +31,7 @@ function UserListPage() {
   );
 
   const pageNumber = watch("pageNumber");
-  const elementCount = watch("elementCount");
+  const pageSize = watch("pageSize");
   const firstNameContains = watch("firstNameContains");
   const lastNameContains = watch("lastNameContains");
   const sortBy = watch("sortBy");
@@ -40,7 +41,7 @@ function UserListPage() {
     setPaginationSettings((previousSettings) => ({
       ...previousSettings,
       pageNumber: pageNumber,
-      elementCount: elementCount,
+      pageSize: pageSize,
       firstNameContains: firstNameContains,
       lastNameContains: lastNameContains,
       sortBy: sortBy,
@@ -48,7 +49,7 @@ function UserListPage() {
     }));
   }, [
     pageNumber,
-    elementCount,
+    pageSize,
     firstNameContains,
     lastNameContains,
     sortBy,
@@ -77,8 +78,12 @@ function UserListPage() {
       .catch((error) => console.log(error));
   };
 
-  const handleAddUserButtonClick = () => {
-    setModalVisible(!modalVisible);
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -96,14 +101,17 @@ function UserListPage() {
             />
           </section>
         </form>
-        <BasicButton
-          buttonLabel={"add user"}
-          action={handleAddUserButtonClick}
-        />
+        <BasicButton buttonLabel={"add user"} action={showModal} />
       </div>
       <div className="listOfElements">{usersToDisplay}</div>
       <div>
-        <InModal>mau</InModal>
+        <InModal
+          modalVisibility={modalVisible}
+          handleClosing={closeModal}
+          title={"add user"}
+        >
+          <UserInfoCard />
+        </InModal>
       </div>
     </>
   );

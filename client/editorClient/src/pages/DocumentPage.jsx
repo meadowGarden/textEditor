@@ -40,7 +40,7 @@ function DocumentPage() {
   };
 
   return (
-    <>
+    <div className="basicPageContainer">
       <DocumentMenuTab
         document={updatedDocument}
         handleSave={handleSave}
@@ -48,7 +48,7 @@ function DocumentPage() {
         handleReturn={handleReturn}
       />
       <DocumentBodyField document={document} setDocument={setUpdatedDocument} />
-    </>
+    </div>
   );
 }
 

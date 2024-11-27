@@ -6,10 +6,12 @@ import NotFoundPage from "./pages/NotFoundPage";
 import DocumentListPage from "./pages/DocumentListPage";
 import UserListPage from "./pages/UserListPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "./components/site/NavBar";
 
 function App() {
   return (
     <>
+      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/users" element={<UserListPage />} />
