@@ -30,12 +30,18 @@ function UserListPage() {
     defaultPaginationSettings
   );
 
-  const pageNumber = watch("pageNumber");
-  const pageSize = watch("pageSize");
-  const firstNameContains = watch("firstNameContains");
-  const lastNameContains = watch("lastNameContains");
-  const sortBy = watch("sortBy");
-  const sortAsc = watch("sortAsc");
+  const pageNumber = watch("pageNumber", defaultPaginationSettings.pageNumber);
+  const pageSize = watch("pageSize", defaultPaginationSettings.pageSize);
+  const firstNameContains = watch(
+    "firstNameContains",
+    defaultPaginationSettings.firstNameContains
+  );
+  const lastNameContains = watch(
+    "lastNameContains",
+    defaultPaginationSettings.lastNameContains
+  );
+  const sortBy = watch("sortBy", defaultPaginationSettings.sortBy);
+  const sortAsc = watch("sortAsc", defaultPaginationSettings.sortAsc);
 
   useEffect(() => {
     setPaginationSettings((previousSettings) => ({

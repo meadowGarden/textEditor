@@ -27,11 +27,11 @@ function DocumentListPage() {
     defaultPaginationSettings
   );
 
-  const pageNumber = watch("pageNumber");
-  const pageSize = watch("pageSize");
-  const titleContains = watch("titleContains");
-  const sortBy = watch("sortBy");
-  const sortAsc = watch("sortAsc");
+  const pageNumber = watch("pageNumber", defaultPaginationSettings.pageNumber);
+  const pageSize = watch("pageSize", defaultPaginationSettings.pageSize);
+  const titleContains = watch("titleContains", defaultPaginationSettings.titleContains);
+  const sortBy = watch("sortBy", defaultPaginationSettings.sortBy);
+  const sortAsc = watch("sortAsc", defaultPaginationSettings.sortAsc);
 
   useEffect(() => {
     setPaginationSettings((previousSettings) => ({
