@@ -1,15 +1,58 @@
 .menuButtonsContainer {
-  padding: 0em 3em 0em 3em;
+  padding: 0em 3em 1em 3em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2em;
+}
+
+.documentTitleField {
+  color: var(--document-title-text-color);
+  font-weight: 600;
+  font-size: 2em;
+  padding: 0.5em 0.5em 0.25em 0.5em;
+  text-align: center;
+}
+
+.documentTitleEditFieldDialog {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.documentTitleEditFieldDialogButtons {
+  text-align: center;
+}
+.documentTitleEditFieldButtonCancel {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: red;
+  background-color: var(--default-background-color);
+  width: 5em;
+  border: none;
+}
+.documentTitleEditFieldButtonAccept {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: green;
+  background-color: var(--default-background-color);
+  width: 5em;
+  border: none;
+}
+
+.documentTitleEditField {
+  color: var(--document-title-text-color);
+  background-color: var(--default-background-color);
+  border: none;
+  font-weight: 600;
+  font-size: 2em;
+  padding: 0.5em 0.5em 0.25em 0.5em;
+  text-align: center;
 }
 
 .documentBodyField {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding: 1em;
+  padding: 0.5em 1em 1em 1em;
 }
 
 .editorTextArea {
@@ -60,8 +103,6 @@
   cursor: pointer;
   background-color: var(--default-list-element-color-hover);
 }
-
-
 
 .formHeader {
   padding: 2em 2em 1em 2em;

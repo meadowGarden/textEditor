@@ -1,3 +1,5 @@
+import TextSizePanel from "./TextSizePanel";
+
 function DocumentMenuTab({ handleSave, handleDelete, handleReturn }) {
   return (
     <>
@@ -5,6 +7,7 @@ function DocumentMenuTab({ handleSave, handleDelete, handleReturn }) {
         <button onClick={() => handleSave()}>save document</button>
         <button onClick={() => handleDelete()}>delete document</button>
         <button onClick={() => handleReturn()}>return to list</button>
+        <TextSizePanel />
       </div>
     </>
   );

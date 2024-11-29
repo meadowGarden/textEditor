@@ -1,11 +1,11 @@
 :root {
   --standard-text-color: black;
+  --document-title-text-color: #cfe2f3;
 
-  --header-text-color:#444444;
+  --header-text-color: #444444;
 
   --basic-button-backgroung-color-hover: #ffffa2;
   --basic-button-backgroung-color: #faf884;
-  
 
   --default-background-color: #6f89a2;
   --default-list-element-color-hover: #cfe2f3;

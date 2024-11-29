@@ -20,6 +20,7 @@ const DocumentBodyField = ({ document, setDocument }) => {
   return (
     <form id="documentBodyForm" className="documentBodyField">
       <textarea
+        id="textBody"
         defaultValue={documentBody}
         rows={30}
         onChange={handleChange}

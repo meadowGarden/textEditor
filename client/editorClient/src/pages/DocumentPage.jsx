@@ -3,11 +3,13 @@ import DocumentBodyField from "../components/document/DocumentBodyField";
 import DocumentMenuTab from "../components/document/DocumentMenuTab";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import DocumentTitleField from "../components/document/DocumentTitleField";
+import DocumentTitleEditField from "../components/document/DocumentTitleEditField";
 
 function DocumentPage() {
   const { documentID } = useParams();
   const [document, setDocument] = useState();
-  const [updatedDocument, setUpdatedDocument] = useState({});
+  const [editState, setEditState] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,14 +17,13 @@ function DocumentPage() {
       .get(`http://localhost:8080/api/documents/${documentID}`)
       .then((response) => {
         setDocument(response.data);
-        setUpdatedDocument(response.data);
       })
       .catch((error) => console.log(error));
   }, [documentID]);
 
   const handleSave = () => {
     axios
-      .put(`http://localhost:8080/api/documents/${documentID}`, updatedDocument)
+      .put(`http://localhost:8080/api/documents/${documentID}`, document)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
@@ -39,15 +40,39 @@ function DocumentPage() {
     navigate(`/documents`);
   };
 
+  const openEditState = () => {
+    setEditState(true);
+  };
+
+  const closeEditState = () => {
+    setEditState(false);
+  };
+
+  const updateTitle = (newTitle) => {
+    setDocument((prev) => ({ ...prev, title: newTitle }));
+  };
+
   return (
     <div className="basicPageContainer">
       <DocumentMenuTab
-        document={updatedDocument}
+        document={document}
         handleSave={handleSave}
         handleDelete={handleDelete}
         handleReturn={handleReturn}
       />
-      <DocumentBodyField document={document} setDocument={setUpdatedDocument} />
+      {!editState ? (
+        <DocumentTitleField
+          handleClick={openEditState}
+          documentTitle={document?.title}
+        />
+      ) : (
+        <DocumentTitleEditField
+          closeEditState={closeEditState}
+          documentTitle={document?.title}
+          updateTitle={updateTitle}
+        />
+      )}
+      <DocumentBodyField document={document} setDocument={setDocument} />
     </div>
   );
 }
