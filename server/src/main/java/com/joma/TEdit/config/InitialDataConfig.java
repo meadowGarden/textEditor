@@ -53,19 +53,19 @@ public class InitialDataConfig {
 
     private List<Integer> addUsers() {
         final List<Integer> addedUsers = new ArrayList<>();
-        addedUsers.add(addUser("Rebecca", "Kuang", "pass"));
-        addedUsers.add(addUser("Dexter", "Gabriel", "pass"));
-        addedUsers.add(addUser("Martha", "Wells", "pass"));
-        addedUsers.add(addUser("Sarah", "Pinsker", "pass"));
-        addedUsers.add(addUser("Mary", "Kowai", "pass"));
-        addedUsers.add(addUser("Nora", "Jemisin", "pass"));
-        addedUsers.add(addUser("Charlie", "Anders", "pass"));
-        addedUsers.add(addUser("Naomi", "Novik", "pass"));
+        addedUsers.add(addUser("hipocrite","Rebecca", "Kuang", "pass"));
+        addedUsers.add(addUser("pointdexter", "Dexter", "Gabriel", "pass"));
+        addedUsers.add(addUser("wotw","Martha", "Wells", "pass"));
+        addedUsers.add(addUser("pinskuviene","Sarah", "Pinsker", "pass"));
+        addedUsers.add(addUser("onTheCross","Mary", "Kowai", "pass"));
+        addedUsers.add(addUser("noriko","Nora", "Jemisin", "pass"));
+        addedUsers.add(addUser("ca","Charlie", "Anders", "pass"));
+        addedUsers.add(addUser("mori","Naomi", "Novik", "pass"));
         return addedUsers;
     }
 
-    public int addUser(String firstName, String lastName, String password) {
-        final User userToAdd = new User(firstName, lastName, password);
+    public int addUser(String userName, String firstName, String lastName, String password) {
+        final User userToAdd = new User(userName, firstName, lastName, password);
         final User addedUser = userRepository.save(userToAdd);
         return addedUser.getId();
     }

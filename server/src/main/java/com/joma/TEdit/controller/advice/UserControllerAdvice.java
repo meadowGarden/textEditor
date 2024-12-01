@@ -1,18 +1,18 @@
 package com.joma.TEdit.controller.advice;
 
-import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class DocumentControllerAspect {
+public class UserControllerAdvice {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<?> documentNotFoundExceptionHandler() {
+    @ExceptionHandler(EntityExistsException.class)
+    public ResponseEntity<?> userExistsExceptionHandler() {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body("document you are searching was not found");
+                .body("user with provided username already exists");
     }
 }

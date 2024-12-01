@@ -5,17 +5,19 @@ import axios from "axios";
 function UserInfoCard() {
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (formData) => {
     const accountData = {
+      username: formData.username,
       firstName: formData.firstName,
       lastName: formData.lastName,
       password: formData.password,
     };
+
+    console.log(accountData);
 
     axios
       .post(`http://localhost:8080/api/users`, accountData)
@@ -28,33 +30,49 @@ function UserInfoCard() {
       <form>
         <section>
           <input
+            {...register("username", {
+              required: "username is required",
+              minLength: 1,
+              maxLength: 30,
+            })}
+            placeholder="username"
+          />
+          {errors.username && <div>{errors.username.message}</div>}
+        </section>
+
+        <section>
+          <input
             placeholder="first name"
             {...register("firstName", {
-              required: true,
+              required: "first name is required",
               minLength: 1,
               maxLength: 50,
             })}
           />
+          {errors.firstName && <div>{errors.firstName.message}</div>}
         </section>
         <section>
           <input
             placeholder="last name"
             {...register("lastName", {
-              required: true,
+              required: "last name is required",
               minLength: 1,
               maxLength: 50,
             })}
           />
+          {errors.lastName && <div>{errors.lastName.message}</div>}
         </section>
         <section>
           <input
             placeholder="password"
+            type="password"
             {...register("password", {
-              required: true,
+              required: "password is required",
               minLength: 3,
               maxLength: 50,
             })}
           />
+          {errors.password && <div>{errors.password.message}</div>}
         </section>
         <BasicButton buttonLabel={"add"} action={handleSubmit(onSubmit)} />
       </form>

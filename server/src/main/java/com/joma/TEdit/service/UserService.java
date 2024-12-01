@@ -7,12 +7,16 @@ import com.joma.TEdit.repository.UserRepository;
 import com.joma.TEdit.request.UserListRequest;
 import com.joma.TEdit.response.user.UserResponse;
 import com.joma.TEdit.response.user.UsersListResponse;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -24,6 +28,11 @@ public class UserService {
     }
 
     public UserResponse createUser(UserDTO dto) {
+        final Optional<User> userInDB = userRepository.findByUsername(dto.getUsername());
+        if (userInDB.isPresent()) {
+            throw new EntityExistsException();
+        }
+
         final User userToSave = AppMapper.getUserFromDTO(dto);
         final User savedUser = userRepository.save(userToSave);
         return AppMapper.getUserResponseFromUser(savedUser);
@@ -31,7 +40,7 @@ public class UserService {
 
     public UserResponse getUserByID(int id) {
         final User user = userRepository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new EntityNotFoundException("user with id " + id + " was not found"));
         return AppMapper.getUserResponseFromUser(user);
     }
 

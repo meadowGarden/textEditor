@@ -9,11 +9,11 @@ import com.joma.TEdit.response.user.UserResponse;
 public class AppMapper {
 
     public static User getUserFromDTO(UserDTO dto) {
-        return new User(dto.getFirstName(), dto.getLastName(), dto.getPassword());
+        return new User(dto.getUsername(),dto.getFirstName(), dto.getLastName(), dto.getPassword());
     }
 
     public static UserResponse getUserResponseFromUser(User user) {
-        return new UserResponse(user.getId(), user.getFirstName(), user.getLastName());
+        return new UserResponse(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName());
     }
 
     public static Document getDocument(String title, String body, User user) {
