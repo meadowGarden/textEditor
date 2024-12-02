@@ -6,8 +6,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import DocumentListPage from "./pages/DocumentListPage";
 import UserListPage from "./pages/UserListPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from "./components/site/NavBar";
 import TestPage from "./pages/TestPage";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
   return (

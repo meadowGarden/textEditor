@@ -126,23 +126,7 @@
   text-align: center;
 }
 
-.basicButton {
-  background-color: var(--basic-button-backgroung-color);
-  color: var(--standard-text-color);
-  font-size: 1.2em;
 
-  width: 10em;
-
-  padding: 0.5em 1em;
-  margin: 0.25em;
-
-  border-radius: 0.5em;
-  border: none;
-}
-.basicButton:hover {
-  background-color: var(--basic-button-backgroung-color-hover);
-  cursor: pointer;
-}
 
 .userControlPanel {
   background-color: var(--default-background-color);

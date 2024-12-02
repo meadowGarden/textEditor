@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import UserListElement from "../components/user/UserListElement";
-import BasicButton from "../components/BasicButton";
 import "../styles/PageDesign.css";
-import InModal from "../components/InModal";
-import UserInfoCard from "../components/user/UserInfoCard";
+import BasicButton from "../components/ui/basicButton/BasicButton";
+import InputModal from "../components/ui/inputModal/InputModal";
+import AddUserCard from "../components/user/addUserCard/AddUserCard";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
@@ -18,17 +18,18 @@ const defaultPaginationSettings = {
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [addUserModalVisible, setAddUserModalVisible] = useState(false);
+  const [editUserModalVisible, editAddUserModalVisible] = useState(false);
+
+  const [paginationSettings, setPaginationSettings] = useState(
+    defaultPaginationSettings
+  );
 
   const {
     register,
     watch,
     formState: { errors },
   } = useForm();
-
-  const [paginationSettings, setPaginationSettings] = useState(
-    defaultPaginationSettings
-  );
 
   const pageNumber = watch("pageNumber", defaultPaginationSettings.pageNumber);
   const pageSize = watch("pageSize", defaultPaginationSettings.pageSize);
@@ -44,8 +45,8 @@ function UserListPage() {
   const sortAsc = watch("sortAsc", defaultPaginationSettings.sortAsc);
 
   useEffect(() => {
-    setPaginationSettings((previousSettings) => ({
-      ...previousSettings,
+    setPaginationSettings((prev) => ({
+      ...prev,
       pageNumber: pageNumber,
       pageSize: pageSize,
       firstNameContains: firstNameContains,
@@ -84,12 +85,12 @@ function UserListPage() {
       .catch((error) => console.log(error));
   };
 
-  const showModal = () => {
-    setModalVisible(true);
+  const showAddUserModal = () => {
+    setAddUserModalVisible(true);
   };
 
-  const closeModal = () => {
-    setModalVisible(false);
+  const closeAddUserModal = () => {
+    setAddUserModalVisible(false);
   };
 
   return (
@@ -107,17 +108,17 @@ function UserListPage() {
             />
           </section>
         </form>
-        <BasicButton buttonLabel={"add user"} action={showModal} />
+        <BasicButton label={"add user"} onClick={showAddUserModal} />
       </div>
       <div className="listOfElements">{usersToDisplay}</div>
       <div>
-        <InModal
-          modalVisibility={modalVisible}
-          handleClosing={closeModal}
+        <InputModal
+          isVisible={addUserModalVisible}
+          close={closeAddUserModal}
           title={"add user"}
         >
-          <UserInfoCard />
-        </InModal>
+          <AddUserCard />
+        </InputModal>
       </div>
     </>
   );

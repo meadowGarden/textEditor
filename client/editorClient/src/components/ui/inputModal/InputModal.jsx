@@ -1,8 +1,8 @@
 import Modal from "react-bootstrap/Modal";
 
-function InModal({ children, modalVisibility, handleClosing, title }) {
+function InputModal({ children, isVisible, close, title }) {
   return (
-    <Modal show={modalVisibility} onHide={handleClosing}>
+    <Modal show={isVisible} onHide={close}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
@@ -11,4 +11,4 @@ function InModal({ children, modalVisibility, handleClosing, title }) {
   );
 }
 
-export default InModal;
+export default InputModal;

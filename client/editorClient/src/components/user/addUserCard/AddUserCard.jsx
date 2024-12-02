@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import BasicButton from "../BasicButton";
 import axios from "axios";
+import BasicButton from "../../ui/basicButton/BasicButton";
 
-function UserInfoCard() {
+function AddUserCard() {
   const {
     register,
     handleSubmit,
@@ -32,8 +32,14 @@ function UserInfoCard() {
           <input
             {...register("username", {
               required: "username is required",
-              minLength: 1,
-              maxLength: 30,
+              minLength: {
+                value: 3,
+                message: "username must be at least three characters",
+              },
+              maxLength: {
+                value: 30,
+                message: "username should not be longer than 30 characters",
+              },
             })}
             placeholder="username"
           />
@@ -45,8 +51,14 @@ function UserInfoCard() {
             placeholder="first name"
             {...register("firstName", {
               required: "first name is required",
-              minLength: 1,
-              maxLength: 50,
+              minLength: {
+                value: 1,
+                message: "first name must be at least one character",
+              },
+              maxLength: {
+                value: 50,
+                message: "first name should not be longer than 50 characters",
+              },
             })}
           />
           {errors.firstName && <div>{errors.firstName.message}</div>}
@@ -56,8 +68,14 @@ function UserInfoCard() {
             placeholder="last name"
             {...register("lastName", {
               required: "last name is required",
-              minLength: 1,
-              maxLength: 50,
+              minLength: {
+                value: 1,
+                message: "last name must be at least one character",
+              },
+              maxLength: {
+                value: 50,
+                message: "last name should not be longer than 50 characters",
+              },
             })}
           />
           {errors.lastName && <div>{errors.lastName.message}</div>}
@@ -68,16 +86,18 @@ function UserInfoCard() {
             type="password"
             {...register("password", {
               required: "password is required",
-              minLength: 3,
-              maxLength: 50,
+              minLength: {
+                value: 6,
+                message: "password must be at least six characters",
+              },
             })}
           />
           {errors.password && <div>{errors.password.message}</div>}
         </section>
-        <BasicButton buttonLabel={"add"} action={handleSubmit(onSubmit)} />
+        <BasicButton label={"add"} onClick={handleSubmit(onSubmit)} />
       </form>
     </>
   );
 }
 
-export default UserInfoCard;
+export default AddUserCard;
