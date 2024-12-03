@@ -117,7 +117,7 @@ function UserListPage() {
           close={closeAddUserModal}
           title={"add user"}
         >
-          <AddUserCard />
+          <AddUserCard close={closeAddUserModal} />
         </InputModal>
       </div>
     </>

@@ -1,0 +1,24 @@
+.addUserCard {
+  display: grid;
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  background-color: var(--default-front-color);
+}
+
+.cardElement {
+  border: none;
+  height: 2rem;
+  width: 80%;
+}
+.cardElement:focus {
+  outline: none;
+}
+
+.buttonMenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:2rem;
+}
+

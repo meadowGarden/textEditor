@@ -1,0 +1,11 @@
+.inputModalHeader {
+  background-color: var(--input-modal-body-color);
+  border-bottom: none !important;
+  display: grid !important;
+  text-align: center !important;
+}
+
+.inputModalBody {
+  text-align: center;
+  background-color: var(--input-modal-title-color);
+}

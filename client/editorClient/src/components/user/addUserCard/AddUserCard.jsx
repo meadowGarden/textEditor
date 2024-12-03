@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import BasicButton from "../../ui/basicButton/BasicButton";
+import "./AddUserCard.css";
+import "../../../styles/Error.css";
 
-function AddUserCard() {
+function AddUserCard({ close }) {
   const {
     register,
     handleSubmit,
@@ -17,17 +19,18 @@ function AddUserCard() {
       password: formData.password,
     };
 
-    console.log(accountData);
-
     axios
       .post(`http://localhost:8080/api/users`, accountData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        close();
+      })
       .catch((error) => console.log(error));
   };
 
   return (
     <>
-      <form>
+      <form className="addUserCard">
         <section>
           <input
             {...register("username", {
@@ -42,13 +45,15 @@ function AddUserCard() {
               },
             })}
             placeholder="username"
+            className="cardElement"
           />
-          {errors.username && <div>{errors.username.message}</div>}
+          {errors.username && (
+            <div className="formFieldError">{errors.username.message}</div>
+          )}
         </section>
 
         <section>
           <input
-            placeholder="first name"
             {...register("firstName", {
               required: "first name is required",
               minLength: {
@@ -60,12 +65,16 @@ function AddUserCard() {
                 message: "first name should not be longer than 50 characters",
               },
             })}
+            placeholder="first name"
+            className="cardElement"
           />
-          {errors.firstName && <div>{errors.firstName.message}</div>}
+          {errors.firstName && (
+            <div className="formFieldError">{errors.firstName.message}</div>
+          )}
         </section>
+
         <section>
           <input
-            placeholder="last name"
             {...register("lastName", {
               required: "last name is required",
               minLength: {
@@ -77,12 +86,16 @@ function AddUserCard() {
                 message: "last name should not be longer than 50 characters",
               },
             })}
+            placeholder="last name"
+            className="cardElement"
           />
-          {errors.lastName && <div>{errors.lastName.message}</div>}
+          {errors.lastName && (
+            <div className="formFieldError">{errors.lastName.message}</div>
+          )}
         </section>
+
         <section>
           <input
-            placeholder="password"
             type="password"
             {...register("password", {
               required: "password is required",
@@ -91,10 +104,18 @@ function AddUserCard() {
                 message: "password must be at least six characters",
               },
             })}
+            placeholder="password"
+            className="cardElement"
           />
-          {errors.password && <div>{errors.password.message}</div>}
+          {errors.password && (
+            <div className="formFieldError">{errors.password.message}</div>
+          )}
         </section>
-        <BasicButton label={"add"} onClick={handleSubmit(onSubmit)} />
+
+        <section className="buttonMenu">
+          <BasicButton label={"add"} onClick={handleSubmit(onSubmit)} />
+          <BasicButton label={"cancel"} onClick={close} />
+        </section>
       </form>
     </>
   );
