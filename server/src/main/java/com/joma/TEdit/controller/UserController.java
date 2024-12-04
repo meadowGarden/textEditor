@@ -54,10 +54,9 @@ public class UserController {
                 .body(String.format("%s", "no implementation yet"));
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteUser() {
-        return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
-                .body(String.format("%s", "no implementation yet"));
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable int id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }

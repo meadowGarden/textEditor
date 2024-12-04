@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -77,6 +78,7 @@ public class UserService {
         return AppMapper.getUserResponseFromUser(user);
     }
 
+    @Transactional
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }

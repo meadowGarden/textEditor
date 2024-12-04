@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import UserListElement from "../components/user/UserListElement";
-import "../styles/PageDesign.css";
-import BasicButton from "../components/ui/basicButton/BasicButton";
-import InputModal from "../components/ui/inputModal/InputModal";
-import AddUserCard from "../components/user/addUserCard/AddUserCard";
+import "../../pages/userListPage/UserListPage.css"
+import BasicButton from "../../components/ui/basicButton/BasicButton";
+import InputModal from "../../components/ui/inputModal/InputModal";
+import AddUserCard from "../../components/user/addUserCard/AddUserCard";
+import "./UserListPage.css";
+import UserListElement from "../../components/user/userListElement/UserListElement";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
@@ -74,16 +75,18 @@ function UserListPage() {
       .catch((error) => console.log(error));
   }, [paginationSettings, setUsers]);
 
-  const usersToDisplay = users.map((user) => {
-    return <UserListElement key={user.id} user={user} />;
-  });
-
-  const addUser = () => {
+  const deleteUser = (userID) => {
     axios
-      .post(`http://localhost:8080/api/users`)
+      .delete(`http://localhost:8080/api/users/${userID}`)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
+
+  const usersToDisplay = users.map((user) => {
+    return (
+      <UserListElement key={user.id} user={user} deleteUser={deleteUser} />
+    );
+  });
 
   const showAddUserModal = () => {
     setAddUserModalVisible(true);
@@ -108,9 +111,9 @@ function UserListPage() {
             />
           </section>
         </form>
-        <BasicButton label={"add user"} onClick={showAddUserModal} />
       </div>
       <div className="listOfElements">{usersToDisplay}</div>
+      <BasicButton label={"add user"} onClick={showAddUserModal} />
       <div>
         <InputModal
           isVisible={addUserModalVisible}

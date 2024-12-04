@@ -1,0 +1,30 @@
+.userControlPanel {
+  background-color: var(--default-background-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.formHeader {
+  padding: 2em 2em 1em 2em;
+  background-color: var(--default-background-color);
+}
+
+.formHeaderElementUser {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.listOfElements {
+  background-color: var(--default-background-color);
+  padding: 1em 2em 0em 2em;
+}
+
+.listOfElementsHeader {
+  display: grid;
+  grid-template-columns: 0.5fr 5fr 1fr 2fr 2fr;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+
