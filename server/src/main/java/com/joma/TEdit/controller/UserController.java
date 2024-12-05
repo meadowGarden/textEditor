@@ -47,11 +47,21 @@ public class UserController {
                 .body(response.getUsers());
     }
 
-    @PutMapping
-    public ResponseEntity<?> updateUser() {
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<?> getUserByID(@PathVariable int id) {
+        final UserResponse response = userService.getUserByID(id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody UserDTO dto) {
+        final UserResponse response = userService.updateUser(id, dto);
+
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
-                .body(String.format("%s", "no implementation yet"));
+                .body(response);
     }
 
     @DeleteMapping(path = "/{id}")

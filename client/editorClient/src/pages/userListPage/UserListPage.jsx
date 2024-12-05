@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import "../../pages/userListPage/UserListPage.css"
+import "../../pages/userListPage/UserListPage.css";
 import BasicButton from "../../components/ui/basicButton/BasicButton";
 import InputModal from "../../components/ui/inputModal/InputModal";
 import AddUserCard from "../../components/user/addUserCard/AddUserCard";
@@ -20,7 +20,6 @@ const defaultPaginationSettings = {
 function UserListPage() {
   const [users, setUsers] = useState([]);
   const [addUserModalVisible, setAddUserModalVisible] = useState(false);
-  const [editUserModalVisible, editAddUserModalVisible] = useState(false);
 
   const [paginationSettings, setPaginationSettings] = useState(
     defaultPaginationSettings
@@ -82,12 +81,6 @@ function UserListPage() {
       .catch((error) => console.log(error));
   };
 
-  const usersToDisplay = users.map((user) => {
-    return (
-      <UserListElement key={user.id} user={user} deleteUser={deleteUser} />
-    );
-  });
-
   const showAddUserModal = () => {
     setAddUserModalVisible(true);
   };
@@ -95,6 +88,16 @@ function UserListPage() {
   const closeAddUserModal = () => {
     setAddUserModalVisible(false);
   };
+
+  const usersToDisplay = users.map((user) => {
+    return (
+      <UserListElement
+        key={user.id}
+        user={user}
+        deleteUser={deleteUser}
+      />
+    );
+  });
 
   return (
     <>

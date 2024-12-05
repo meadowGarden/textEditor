@@ -71,9 +71,9 @@ public class UserService {
     public UserResponse updateUser(int id, UserDTO dto) {
         final User user = userRepository.findById(id)
                 .orElseThrow();
+        user.setUsername(dto.getUsername());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
-        user.setPassword(dto.getPassword());
         userRepository.save(user);
         return AppMapper.getUserResponseFromUser(user);
     }
