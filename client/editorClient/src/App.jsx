@@ -5,9 +5,11 @@ import DocumentPage from "./pages/DocumentPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import DocumentListPage from "./pages/DocumentListPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TestPage from "./pages/TestPage";
 import NavBar from "./components/navbar/NavBar";
 import UserListPage from "./pages/userListPage/UserListPage";
+import TestPage01 from "./pages/testPages/TestPage01";
+import TestPage02 from "./pages/testPages/TestPage02";
+import TestPage03 from "./pages/testPages/TestPage03";
 
 function App() {
   return (
@@ -18,8 +20,11 @@ function App() {
         <Route path="/users" element={<UserListPage />} />
         <Route path="/documents/" element={<DocumentListPage />} />
         <Route path="/documents/:documentID" element={<DocumentPage />} />
-        <Route path="/test" element={<TestPage />} />
         <Route path="/*" element={<NotFoundPage />} />
+
+        <Route path="/test01" element={<TestPage01 />} />
+        <Route path="/test02" element={<TestPage02 />} />
+        <Route path="/test03" element={<TestPage03 />} />
       </Routes>
     </>
   );

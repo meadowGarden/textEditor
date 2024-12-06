@@ -4,7 +4,7 @@ import ListButton from "../../ui/listButton/ListButton";
 import EditUserCard from "../editUserCard/EditUserCard";
 import "./UserListElement.css";
 
-const UserListElement = ({ user, deleteUser }) => {
+const UserListElement = ({ user, deleteUser, updateUser }) => {
   const { id, username, firstName, lastName } = user;
   const [editUserModalVisible, setEditAddUserModalVisible] = useState(false);
 
@@ -33,8 +33,9 @@ const UserListElement = ({ user, deleteUser }) => {
         title={"edit user"}
       >
         <EditUserCard
-          userID={id}
+          user={user}
           close={closeEditUserModal}
+          updateUser={updateUser}
         />
       </InputModal>
     </>

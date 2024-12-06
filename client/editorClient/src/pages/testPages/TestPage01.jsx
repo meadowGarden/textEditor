@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import "../styles/ComponentDesign.css";
+import "./testStyles.css";
 
-const TestPage = () => {
+const TestPage01 = () => {
   const {
     register,
     handleSubmit,
@@ -78,4 +78,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default TestPage01;

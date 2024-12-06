@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import BasicButton from "../../ui/basicButton/BasicButton";
 
-const EditUserCard = ({ userID }) => {
-  const [user, setUser] = useState();
+const EditUserCard = ({ user, updateUser }) => {
+  const [userData, setUserData] = useState(user);
 
   const {
     register,
@@ -14,10 +14,10 @@ const EditUserCard = ({ userID }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/users/${userID}`)
-      .then((response) => setUser(response.data))
+      .get(`http://localhost:8080/api/users/${user?.id}`)
+      .then((response) => setUserData(response.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [user]);
 
   const onSubmit = (formData) => {
     const updatedUser = {
@@ -26,13 +26,7 @@ const EditUserCard = ({ userID }) => {
       lastName: formData.lastName,
     };
 
-    axios
-      .put(`http://localhost:8080/api/users/${userID}`, updatedUser)
-      .then((response) => {
-        console.log(response);
-        setUser(updatedUser);
-      })
-      .catch((error) => console.log(error));
+    updateUser(userData.id, updatedUser);
   };
 
   return (
@@ -42,7 +36,7 @@ const EditUserCard = ({ userID }) => {
           <label>username</label>
           <input
             {...register("username")}
-            defaultValue={user?.username}
+            defaultValue={userData?.username}
             type="text"
           />
         </section>
@@ -51,7 +45,7 @@ const EditUserCard = ({ userID }) => {
           <label>fist name</label>
           <input
             {...register("firstName")}
-            defaultValue={user?.firstName}
+            defaultValue={userData?.firstName}
             type="text"
           />
         </section>
@@ -60,7 +54,7 @@ const EditUserCard = ({ userID }) => {
           <label>last name</label>
           <input
             {...register("lastName")}
-            defaultValue={user?.lastName}
+            defaultValue={userData?.lastName}
             type="text"
           />
         </section>

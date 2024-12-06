@@ -20,7 +20,6 @@ const defaultPaginationSettings = {
 function UserListPage() {
   const [users, setUsers] = useState([]);
   const [addUserModalVisible, setAddUserModalVisible] = useState(false);
-
   const [paginationSettings, setPaginationSettings] = useState(
     defaultPaginationSettings
   );
@@ -63,6 +62,20 @@ function UserListPage() {
     sortAsc,
   ]);
 
+  const updateUser = (userID, updatedUser) => {
+    axios
+      .put(`http://localhost:8080/api/users/${userID}`, updatedUser)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
+  const deleteUser = (userID) => {
+    axios
+      .delete(`http://localhost:8080/api/users/${userID}`)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/users`, {
@@ -72,14 +85,7 @@ function UserListPage() {
         setUsers(response.data.content);
       })
       .catch((error) => console.log(error));
-  }, [paginationSettings, setUsers]);
-
-  const deleteUser = (userID) => {
-    axios
-      .delete(`http://localhost:8080/api/users/${userID}`)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-  };
+  }, [paginationSettings]);
 
   const showAddUserModal = () => {
     setAddUserModalVisible(true);
@@ -95,6 +101,7 @@ function UserListPage() {
         key={user.id}
         user={user}
         deleteUser={deleteUser}
+        updateUser={updateUser}
       />
     );
   });
