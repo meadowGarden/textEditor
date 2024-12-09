@@ -1,2 +1,5 @@
-
-
+.basicPageContainer {
+  padding: 2rem;
+  background-color: var(--default-background-color);
+  
+}

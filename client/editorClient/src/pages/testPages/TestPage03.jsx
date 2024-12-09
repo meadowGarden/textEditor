@@ -1,9 +1,12 @@
 import { useMemo, useState } from "react";
 import { InitialItems } from "./testUtilities/TestUtilities";
+import "./testStyles/styles01.css";
 
 const TestPage03 = () => {
   const [count, setCount] = useState(0);
   const [items] = useState(InitialItems);
+  const classNameRed = "red";
+  const classNameBlue = "blue";
 
   // const selectedItem = items.find((item) => item.isSelected);
   const selectedItem = useMemo(
@@ -13,7 +16,7 @@ const TestPage03 = () => {
 
   return (
     <div>
-      <h1>count:{count}</h1>
+      <h1 className={classNameBlue}>count:{count}</h1>
       <h1>selected item: {selectedItem?.id}</h1>
       <button onClick={() => setCount(count + 1)}>increment</button>
     </div>

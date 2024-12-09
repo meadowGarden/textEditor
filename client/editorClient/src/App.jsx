@@ -1,15 +1,16 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import DocumentPage from "./pages/DocumentPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import DocumentListPage from "./pages/DocumentListPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/navbar/NavBar";
-import UserListPage from "./pages/userListPage/UserListPage";
 import TestPage01 from "./pages/testPages/TestPage01";
 import TestPage02 from "./pages/testPages/TestPage02";
 import TestPage03 from "./pages/testPages/TestPage03";
+import TestPage04 from "./pages/testPages/TestPage04";
+import HomePage from "./pages/homePage/HomePage";
+import UserListPage from "./pages/userListPage/UserListPage";
+import DocumentListPage from "./pages/documentListPage/DocumentListPage";
+import DocumentPage from "./pages/documentPage/DocumentPage";
+import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/test01" element={<TestPage01 />} />
         <Route path="/test02" element={<TestPage02 />} />
         <Route path="/test03" element={<TestPage03 />} />
+        <Route path="/test04" element={<TestPage04 />} />
       </Routes>
     </>
   );
