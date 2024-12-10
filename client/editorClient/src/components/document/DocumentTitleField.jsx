@@ -1,12 +1,9 @@
-import EditButton from "../EditButton";
-import "../../styles/ComponentDesign.css";
+import "./DocumentTitleField.css";
 
-const DocumentTitleField = ({ handleClick, documentTitle }) => {
+export default function DocumentTitleField({ onClick, title }) {
   return (
-    <div className="documentTitleField" onClick={handleClick}>
-      {documentTitle}
+    <div className="documentTitleField" onClick={onClick}>
+      {title}
     </div>
   );
-};
-
-export default DocumentTitleField;
+}

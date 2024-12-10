@@ -1,10 +1,6 @@
-import axios from "axios";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-  const navigate = useNavigate();
-
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>

@@ -1,0 +1,7 @@
+.menuTabContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  text-align: center;
+  background-color: var(--default-background-color);
+}

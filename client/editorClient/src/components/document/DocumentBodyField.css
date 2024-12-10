@@ -1,0 +1,13 @@
+.documentContainer {
+  text-align: center;
+}
+
+.textEditor {  
+  resize: none;
+  border: none;
+  width: 90%;
+
+}
+.textEditor:focus {
+  outline: none;
+}

@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DocumentService {
@@ -98,9 +99,15 @@ public class DocumentService {
         return AppMapper.getDocumentResponseFromDocument(updateDocument);
     }
 
+    @Transactional
     public void deleteDocument(int id) {
         Document documentToDelete = documentRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
+
+        User owner = userRepository.findById(documentToDelete.getUser().getId())
+                .orElseThrow(() -> new EntityNotFoundException("document's owner was not found"));
+
+        owner.removeDocument(documentToDelete);
         documentRepository.delete(documentToDelete);
     }
 }

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import DocumentListElement from "../../components/document/DocumentListElement";
+import DataLoadignSign from "../../components/ui/dataLoadingSign/DataLoadingSign";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
@@ -12,20 +14,29 @@ const defaultPaginationSettings = {
 
 export default function DocumentListPage() {
   const [documents, setDocuments] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   const [paginationSetting, setPaginationSettings] = useState(
     defaultPaginationSettings
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/documents`, { params: paginationSetting })
       .then((response) => {
         setDocuments(response.data.content);
+        setIsDataLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const handleDocumentClick = () => {};
+  if (isDataLoading) {
+    return <DataLoadignSign />;
+  }
+
+  const handleDocumentClick = (document) => {
+    navigate(`/documents/${document?.id}`);
+  };
 
   const documentsToDisplay = documents.map((document) => (
     <DocumentListElement

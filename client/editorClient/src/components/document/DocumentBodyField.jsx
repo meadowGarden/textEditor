@@ -1,33 +1,23 @@
-import { useForm } from "react-hook-form";
-import "../../styles/ComponentDesign.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import "./DocumentBodyField.css";
 
-const DocumentBodyField = ({ document, setDocument }) => {
+export default function DocumentBodyField({ document, setDocument }) {
   const [documentBody, setDocumentBody] = useState(document?.body);
-  useEffect(() => {
-    setDocumentBody(document?.body);
-  }, [document]);
 
   const handleChange = (event) => {
-    const newBody = event.target.value;
-    setDocumentBody(newBody);
-    setDocument((prev) => ({
-      ...prev,
-      body: newBody,
-    }));
+    const newDocumentBody = event.target.value;
+    setDocumentBody(newDocumentBody);
+    setDocument((prev) => ({ ...prev, body: newDocumentBody }));
   };
 
   return (
-    <form id="documentBodyForm" className="documentBodyField">
+    <form className="documentContainer">
       <textarea
-        id="textBody"
+        className="textEditor"
         defaultValue={documentBody}
-        rows={30}
         onChange={handleChange}
-        className="editorTextArea"
+        rows={30}
       />
     </form>
   );
-};
-
-export default DocumentBodyField;
+}
