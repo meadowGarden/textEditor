@@ -1,0 +1,19 @@
+.titleContainer {
+  text-align: center;
+}
+
+.titleStyle{
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  margin: none;
+  padding: 0.5rem;
+  width: 100%;
+
+  color: var(--document-title-text-color);
+  background-color: var(--document-background-default-color);
+}
+.titleStyle:focus {
+  outline: none;
+}

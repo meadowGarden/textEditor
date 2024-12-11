@@ -2,7 +2,10 @@
   text-align: center;
 }
 
-.textEditor {  
+.textEditor {
+
+  padding: 1rem;
+
   resize: none;
   border: none;
   width: 90%;

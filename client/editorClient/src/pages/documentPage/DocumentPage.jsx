@@ -6,11 +6,13 @@ import DocumentMenuTab from "../../components/document/DocumentMenuTab";
 import "../../styles/pageDesign.css";
 import DocumentBodyField from "../../components/document/DocumentBodyField";
 import DocumentTitleField from "../../components/document/DocumentTitleField";
+import DocumentTitleEditField from "../../components/document/DocumentTitleFieldEdit";
 
 export default function DocumentPage() {
   const { documentID } = useParams();
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [document, setDocument] = useState();
+  const [isTitleInEditMode, setIsTitleInEditMode] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,9 +50,9 @@ export default function DocumentPage() {
     navigate("/documents");
   };
 
-  const handleTitleclick = () => {
-    console.log("handle click not implemented yet");
-  }
+  const handleTitleClick = () => {
+    setIsTitleInEditMode(!isTitleInEditMode);
+  };
 
   return (
     <div className="basicPageContainer">
@@ -59,7 +61,11 @@ export default function DocumentPage() {
         handleDelete={handleDocumentDelete}
         handleReturn={handleReturnToList}
       />
-      <DocumentTitleField onClick={handleTitleclick} title={document.title} />
+      {!isTitleInEditMode ? (
+        <DocumentTitleField onClick={handleTitleClick} title={document.title} />
+      ) : (
+        <DocumentTitleEditField document={document} setDocument={setDocument} />
+      )}
       <DocumentBodyField document={document} setDocument={setDocument} />
     </div>
   );

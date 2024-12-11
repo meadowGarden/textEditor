@@ -1,6 +1,6 @@
 import "./DocumentListElement.css";
 
-const DocumentListElement = ({ document, onClick }) => {
+export default function DocumentListElement({ document, onClick }) {
   const { id, title, userID, createdAt, modifiedAt } = document;
 
   const createdDate = new Date(createdAt);
@@ -17,6 +17,4 @@ const DocumentListElement = ({ document, onClick }) => {
       )}
     </div>
   );
-};
-
-export default DocumentListElement;
+}

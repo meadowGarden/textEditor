@@ -2,11 +2,8 @@ import { useState } from "react";
 import "./DocumentBodyField.css";
 
 export default function DocumentBodyField({ document, setDocument }) {
-  const [documentBody, setDocumentBody] = useState(document?.body);
-
   const handleChange = (event) => {
     const newDocumentBody = event.target.value;
-    setDocumentBody(newDocumentBody);
     setDocument((prev) => ({ ...prev, body: newDocumentBody }));
   };
 
@@ -14,7 +11,7 @@ export default function DocumentBodyField({ document, setDocument }) {
     <form className="documentContainer">
       <textarea
         className="textEditor"
-        defaultValue={documentBody}
+        value={document.body}
         onChange={handleChange}
         rows={30}
       />

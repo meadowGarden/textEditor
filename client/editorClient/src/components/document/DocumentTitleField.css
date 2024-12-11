@@ -2,5 +2,8 @@
   font-size: 2rem;
   font-weight: 600;
   text-align: center;
+  margin: none;
+  padding: 0.5rem;
+
   color: var(--document-title-text-color);
 }
