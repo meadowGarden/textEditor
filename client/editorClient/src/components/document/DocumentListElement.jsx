@@ -10,10 +10,10 @@ export default function DocumentListElement({ document, onClick }) {
     <div className="listElement" onClick={() => onClick(document)}>
       <span>{id}</span>
       <span>{title}</span>
-      <span>{userID}</span>
-      <span>{createdDate.toLocaleDateString("lt-lt")}</span>
+      <span className="listElementID">{userID}</span>
+      <span className="listElementDate">{createdDate.toLocaleDateString("lt-lt")}</span>
       {changedDate.getFullYear() >= createdDate.getFullYear() && (
-        <span>{changedDate.toLocaleDateString("lt-lt")}</span>
+        <span className="listElementDate">{changedDate.toLocaleDateString("lt-lt")}</span>
       )}
     </div>
   );

@@ -2,3 +2,9 @@
   padding: 0rem 2rem 0.5rem 0rem;
   background-color: var(--default-background-color);
 }
+
+.menuPanel {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 1rem;
+}

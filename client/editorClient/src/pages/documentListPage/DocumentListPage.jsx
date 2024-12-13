@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import DocumentListElement from "../../components/document/DocumentListElement";
 import DataLoadignSign from "../../components/ui/dataLoadingSign/DataLoadingSign";
 import DocumentPaginationMenu from "../../components/document/DocumentPaginationMenu";
+import DocumentListHeaders from "../../components/document/DocumentListHeaders";
 
 const defaultPaginationSettings = {
   pageNumber: 1,
@@ -21,9 +22,9 @@ export default function DocumentListPage() {
     defaultPaginationSettings
   );
   const navigate = useNavigate();
-  useEffect(() => {});
 
   useEffect(() => {
+    
     axios
       .get(`http://localhost:8080/api/documents`, { params: paginationSetting })
       .then((response) => {
@@ -33,8 +34,6 @@ export default function DocumentListPage() {
       })
       .catch((error) => console.log(error));
   }, [paginationSetting]);
-
-  console.log(paginationData);
 
   if (isDataLoading) {
     return <DataLoadignSign />;
@@ -54,12 +53,12 @@ export default function DocumentListPage() {
 
   return (
     <div className="basicPageContainer">
-      <div>document list</div>
       <DocumentPaginationMenu
         settings={paginationSetting}
         setSettings={setPaginationSettings}
         paginationData={paginationData}
       />
+      <DocumentListHeaders />
       {documentsToDisplay}
     </div>
   );
