@@ -1,0 +1,9 @@
+.usersHeadersContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 3fr 4fr;
+
+}
+
+.header {
+  text-align: center;
+}
