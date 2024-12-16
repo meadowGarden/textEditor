@@ -9,7 +9,7 @@ const defaultPaginatioSettings = {
   pageNumber: 1,
   pageSize: 15,
   firstNameContains: "",
-  firstNameContains: "",
+  lastNameContains: "",
   sortBy: "id",
   sortAsc: true,
 };
@@ -20,6 +20,7 @@ export default function UserListPage() {
   const [paginationSettings, setPaginationSettings] = useState(
     defaultPaginatioSettings
   );
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   useEffect(() => {
     axios
@@ -37,15 +38,44 @@ export default function UserListPage() {
     return <DataLoadingSign />;
   }
 
-  const handleUserDelete = (userID) => {
+  const handleUserUpdate = (id, updatedUser) => {
     axios
-      .delete(`http://localhost:8080/api/users/${userID}`)
-      .then((response) => console.log(response))
+      .put(`http://localhost:8080/api/users/${id}`, updatedUser)
+      .then(() => {
+        const updatedUserList = users.map((user) =>
+          user.id === id ? { ...user, ...updatedUser } : user
+        );
+
+        setUsers(updatedUserList);
+        setIsEditModalVisible(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleUserDelete = (id) => {
+    axios
+      .delete(`http://localhost:8080/api/users/${id}`)
+      .then((response) => {
+        console.log(response);
+        const listAfterDeletion = users.filter(
+          (userInList) => userInList.id !== id
+        );
+        setUsers(listAfterDeletion);
+      })
       .catch((error) => console.log(error));
   };
 
   const usersToDisplay = users.map((user) => {
-    return <UserListElement key={user.id} user={user} />;
+    return (
+      <UserListElement
+        key={user.id}
+        user={user}
+        onDeleteUserClick={handleUserDelete}
+        onUpdateUserClick={handleUserUpdate}
+        isEditModalVisible={isEditModalVisible}
+        setIsEditModalVisible={setIsEditModalVisible}
+      />
+    );
   });
 
   return (
