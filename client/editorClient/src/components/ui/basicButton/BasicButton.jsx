@@ -2,7 +2,13 @@ import "./BasicButton.css";
 
 export default function BasicButton({ onClick, label }) {
   return (
-    <button onClick={onClick} className="basicButton">
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+      className="basicButton"
+    >
       {label}
     </button>
   );

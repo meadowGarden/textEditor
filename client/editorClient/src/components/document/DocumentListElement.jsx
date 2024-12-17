@@ -1,6 +1,12 @@
 import "./DocumentListElement.css";
+import "../ui/basicButton/BasicButton.jsx";
+import BasicButton from "../ui/basicButton/BasicButton.jsx";
 
-export default function DocumentListElement({ document, onClick }) {
+export default function DocumentListElement({
+  document,
+  onClick,
+  onDeleteClick,
+}) {
   const { id, title, userID, createdAt, modifiedAt } = document;
 
   const createdDate = new Date(createdAt);
@@ -11,10 +17,17 @@ export default function DocumentListElement({ document, onClick }) {
       <span>{id}</span>
       <span>{title}</span>
       <span className="listElementID">{userID}</span>
-      <span className="listElementDate">{createdDate.toLocaleDateString("lt-lt")}</span>
+      <span className="listElementDate">
+        {createdDate.toLocaleDateString("lt-lt")}
+      </span>
       {changedDate.getFullYear() >= createdDate.getFullYear() && (
-        <span className="listElementDate">{changedDate.toLocaleDateString("lt-lt")}</span>
+        <span className="listElementDate">
+          {changedDate.toLocaleDateString("lt-lt")}
+        </span>
       )}
+      <span>
+        <BasicButton label={"delete"} onClick={() => onDeleteClick(id)} />
+      </span>
     </div>
   );
 }

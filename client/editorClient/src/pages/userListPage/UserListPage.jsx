@@ -20,7 +20,6 @@ export default function UserListPage() {
   const [paginationSettings, setPaginationSettings] = useState(
     defaultPaginatioSettings
   );
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   useEffect(() => {
     axios
@@ -45,9 +44,7 @@ export default function UserListPage() {
         const updatedUserList = users.map((user) =>
           user.id === id ? { ...user, ...updatedUser } : user
         );
-
         setUsers(updatedUserList);
-        setIsEditModalVisible(false);
       })
       .catch((error) => console.log(error));
   };
@@ -72,8 +69,6 @@ export default function UserListPage() {
         user={user}
         onDeleteUserClick={handleUserDelete}
         onUpdateUserClick={handleUserUpdate}
-        isEditModalVisible={isEditModalVisible}
-        setIsEditModalVisible={setIsEditModalVisible}
       />
     );
   });

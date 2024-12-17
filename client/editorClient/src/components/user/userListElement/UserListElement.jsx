@@ -1,15 +1,11 @@
+import { useState } from "react";
 import InputModal from "../../ui/inputModal/InputModal";
 import ListButton from "../../ui/listButton/ListButton";
 import EditUserCard from "../editUserCard/EditUserCard";
 import "./UserListElement.css";
 
-const UserListElement = ({
-  user,
-  onDeleteUserClick,
-  onUpdateUserClick,
-  isEditModalVisible,
-  setIsEditModalVisible,
-}) => {
+const UserListElement = ({ user, onDeleteUserClick, onUpdateUserClick }) => {
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const { id, username, firstName, lastName } = user;
 
   const handleShowModalClick = () => {
@@ -39,6 +35,7 @@ const UserListElement = ({
           user={user}
           onUpdateUserClick={onUpdateUserClick}
           onCancelClick={handleClosingEditUserModal}
+          onSuccesfullEdit={handleClosingEditUserModal}
         />
       </InputModal>
     </>

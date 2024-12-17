@@ -24,7 +24,6 @@ export default function DocumentListPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     axios
       .get(`http://localhost:8080/api/documents`, { params: paginationSetting })
       .then((response) => {
@@ -43,11 +42,24 @@ export default function DocumentListPage() {
     navigate(`/documents/${document?.id}`);
   };
 
+  const handleDocumentDelete = (documentID) => {
+    axios
+      .delete(`http://localhost:8080/api/documents/${documentID}`)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+
+    const newDocumentsList = documents.filter(
+      (document) => document.id !== documentID
+    );
+    setDocuments(newDocumentsList);
+  };
+
   const documentsToDisplay = documents.map((document) => (
     <DocumentListElement
       key={document.id}
       document={document}
       onClick={handleDocumentClick}
+      onDeleteClick={handleDocumentDelete}
     />
   ));
 

@@ -1,9 +1,12 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import BasicButton from "../../ui/basicButton/BasicButton";
 
-const EditUserCard = ({ user, onUpdateUserClick, onCancelClick }) => {
+const EditUserCard = ({
+  user,
+  onUpdateUserClick,
+  onCancelClick,
+  onSuccesfullEdit,
+}) => {
   const {
     register,
     handleSubmit,
@@ -18,6 +21,7 @@ const EditUserCard = ({ user, onUpdateUserClick, onCancelClick }) => {
     };
 
     onUpdateUserClick(user.id, updatedUser);
+    onSuccesfullEdit();
   };
 
   return (
@@ -25,26 +29,17 @@ const EditUserCard = ({ user, onUpdateUserClick, onCancelClick }) => {
       <form>
         <section>
           <label>username</label>
-          <input
-            {...register("username")}
-            type="text"
-          />
+          <input {...register("username")} type="text" />
         </section>
 
         <section>
           <label>fist name</label>
-          <input
-            {...register("firstName")}
-            type="text"
-          />
+          <input {...register("firstName")} type="text" />
         </section>
 
         <section>
           <label>last name</label>
-          <input
-            {...register("lastName")}
-            type="text"
-          />
+          <input {...register("lastName")} type="text" />
         </section>
       </form>
       <BasicButton onClick={handleSubmit(onSubmit)} label={"update"} />
