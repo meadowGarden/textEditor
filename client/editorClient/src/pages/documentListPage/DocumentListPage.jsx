@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DocumentListElement from "../../components/document/DocumentListElement";
 import DataLoadignSign from "../../components/ui/dataLoadingSign/DataLoadingSign";
 import DocumentPaginationMenu from "../../components/document/DocumentPaginationMenu";

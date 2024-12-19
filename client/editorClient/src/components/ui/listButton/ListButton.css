@@ -1,5 +1,5 @@
 .listButton {
-  background-color: var(--basic-button-backgroung-color);
+  background-color: var(--basic-button-background-color);
   color: var(--standard-button-text-color);
   font-size: 1rem;
   padding: 0rem 0.5rem 0rem 0.5rem;
@@ -11,7 +11,7 @@
   outline: none;
 }
 .listButton:hover {
-  background-color: var(--basic-button-backgroung-color-hover);
+  background-color: var(--basic-button-background-color-hover);
   cursor: pointer;
 }
 

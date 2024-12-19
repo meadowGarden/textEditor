@@ -1,27 +1,27 @@
 :root {
   --standard-text-color: black;
-  --error-text-color:red;
+  --error-text-color: red;
   --standard-button-text-color: black;
   --document-title-text-color: #cfe2f3;
 
   --header-text-color: #444444;
 
-  --basic-button-backgroung-color-hover: #ffffa2;
-  --basic-button-backgroung-color: #faf884;
+  --basic-button-background-color-hover: #ffffa2;
+  --basic-button-background-color: #faf884;
+
+  --icon-button-children-color-hover: #bd2a2aa2;
+  --icon-button-children-color: #631818a2;
 
   --input-modal-title-color: #9fc5e8;
   --input-modal-body-color: #6f89a2;
-  
 
   --default-background-color: #6f89a2;
   --default-list-element-color-hover: #cfe2f3;
   --default-list-element-color: #9fc5e8;
   --default-front-color: #9fc5e8;
 
-
   background-color: var(--default-background-color);
 }
-
 
 /* #root {
   max-width: 1280px;

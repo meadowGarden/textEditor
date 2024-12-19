@@ -1,13 +1,16 @@
 .listElement {
   padding: 0.5rem;
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr 2fr 2fr 1fr;
+  grid-template-columns: 5% 50% 10% 15% 15% 5%;
   background-color: var(--default-list-element-color);
 }
 .listElementID {
   text-align: center;
 }
 .listElementDate {
+  text-align: center;
+}
+.listElementDeleteButton {
   text-align: center;
 }
 .listElement:hover {

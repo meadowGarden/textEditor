@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./DocumentPaginationMenu.css";
 import "../../styles/inputFieldDesign.css";
 
@@ -48,7 +47,7 @@ export default function DocumentPaginationMenu({
           />
         </section>
 
-        <section>
+        <section className="sectionWithLabel">
           <label>quantity</label>
           <select value={settings.pageSize} onChange={handleElementCountChange}>
             <option value={10}>10</option>
@@ -57,7 +56,7 @@ export default function DocumentPaginationMenu({
           </select>
         </section>
 
-        <section>
+        <section className="sectionWithLabel">
           <label>page</label>
           <select
             id="documentsPageNumber"

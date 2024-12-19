@@ -1,9 +1,9 @@
 .basicButton {
-  background-color: var(--basic-button-backgroung-color);
+  background-color: var(--basic-button-background-color);
   color: var(--standard-button-text-color);
 
-  font-size: 1.5rem;
-  
+  font-size: 1rem;
+
   padding: 0rem 1.5rem 0rem 1.5rem;
   margin: 0;
 
@@ -11,6 +11,6 @@
   border-radius: 0.5em;
 }
 .basicButton:hover {
-  background-color: var(--basic-button-backgroung-color-hover);
+  background-color: var(--basic-button-background-color-hover);
   cursor: pointer;
 }

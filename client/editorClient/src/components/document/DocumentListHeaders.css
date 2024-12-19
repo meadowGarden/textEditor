@@ -1,6 +1,11 @@
 .headersContainer {
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr 2fr 2fr 1fr;
+  grid-template-columns: 5% 50% 10% 15% 15% 5%;
+  color: var(--document-title-text-color);
+  font-weight: 600;
+
+  font-size: 1.2rem;
+  padding: 1rem 0rem 0.2rem 0rem;
 }
 
 .header {

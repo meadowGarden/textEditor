@@ -1,0 +1,14 @@
+.iconButton {
+  text-align: center;
+  background-color: #ffffff00;
+  color: var(--icon-button-children-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.iconButton:hover {
+  color: var(--icon-button-children-color-hover);
+  cursor: pointer;
+}

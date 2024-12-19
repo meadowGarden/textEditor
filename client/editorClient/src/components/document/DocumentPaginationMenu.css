@@ -1,10 +1,16 @@
 .documentSettingsContainer {
-  padding: 0rem 2rem 0.5rem 0rem;
+  padding: 0rem 10rem 0.5rem 10rem;
   background-color: var(--default-background-color);
 }
 
 .menuPanel {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 60% 20% 20%;
+  text-align: center;
   gap: 1rem;
+}
+
+.sectionWithLabel {
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
