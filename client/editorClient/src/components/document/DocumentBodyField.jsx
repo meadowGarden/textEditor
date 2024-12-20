@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./DocumentBodyField.css";
+import sanitizeHtml from "sanitize-html";
 
 export default function DocumentBodyField({ document, setDocument }) {
-  const handleChange = (event) => {
-    const newDocumentBody = event.target.value;
-    setDocument((prev) => ({ ...prev, body: newDocumentBody }));
-  };
+  const onContentChange = useCallback((e) => {
+    const sanitizeConfig = {
+      allowedTags: ["b", "i", "a", "p"],
+      allowedAttributes: { a: ["href"] },
+    };
+
+    const newDocumentBody = e.currentTarget.innerHTML;
+    setDocument((prev) => ({ ...prev, body: newDocumentBody }), sanitizeConfig);
+  }, []);
 
   return (
-    <form className="documentContainer">
-      <textarea
-        className="textEditor"
-        value={document.body}
-        onChange={handleChange}
-        rows={30}
-      />
-    </form>
+    <div
+      contentEditable={true}
+      onChange={onContentChange}
+      onBlur={onContentChange}
+      dangerouslySetInnerHTML={{ __html: document.body }}
+      className="docContainer"
+    />
   );
 }

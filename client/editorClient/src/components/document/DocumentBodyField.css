@@ -3,14 +3,21 @@
 }
 
 .textEditor {
-
   padding: 1rem;
 
   resize: none;
   border: none;
   width: 90%;
-
 }
 .textEditor:focus {
   outline: none;
+}
+
+.docContainer {
+  max-width: 100%;
+  padding: 1rem;
+}
+.docContainer:focus {
+  outline: none;
+  background-color: var(--default-list-element-color);
 }
