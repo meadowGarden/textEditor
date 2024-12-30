@@ -20,6 +20,9 @@
   --default-list-element-color: #9fc5e8;
   --default-front-color: #9fc5e8;
 
+  --default-document-body-background: #cfe2f3;
+  --default-document-body-background-focus: #e2edf7;
+
   background-color: var(--default-background-color);
 }
 

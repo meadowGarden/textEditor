@@ -14,10 +14,11 @@
 }
 
 .docContainer {
+  background-color: var(--default-document-body-background);
   max-width: 100%;
   padding: 1rem;
 }
 .docContainer:focus {
   outline: none;
-  background-color: var(--default-list-element-color);
+  background-color: var(--default-document-body-background-focus);
 }

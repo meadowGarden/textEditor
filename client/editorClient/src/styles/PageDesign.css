@@ -1,5 +1,7 @@
 .basicPageContainer {
+  display: grid;
+  gap: 1rem;
+
   padding: 2rem 4rem 2rem 4rem;
   background-color: var(--default-background-color);
-  
 }

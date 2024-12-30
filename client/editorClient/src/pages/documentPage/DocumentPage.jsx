@@ -7,6 +7,7 @@ import "../../styles/pageDesign.css";
 import DocumentBodyField from "../../components/document/DocumentBodyField";
 import DocumentTitleField from "../../components/document/DocumentTitleField";
 import DocumentTitleEditField from "../../components/document/DocumentTitleFieldEdit";
+import DocumentFormattingMenu from "../../components/document/DocumentFormattingMenu";
 
 export default function DocumentPage() {
   const { documentID } = useParams();
@@ -61,6 +62,7 @@ export default function DocumentPage() {
         handleDelete={handleDocumentDelete}
         handleReturn={handleReturnToList}
       />
+      <DocumentFormattingMenu />
       {!isTitleInEditMode ? (
         <DocumentTitleField onClick={handleTitleClick} title={document.title} />
       ) : (

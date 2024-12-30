@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 import "./DocumentBodyField.css";
-import sanitizeHtml from "sanitize-html";
 
 export default function DocumentBodyField({ document, setDocument }) {
   const onContentChange = useCallback((e) => {
