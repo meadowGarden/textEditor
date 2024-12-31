@@ -6,7 +6,7 @@ import com.joma.TEdit.entity.Document;
 import com.joma.TEdit.entity.User;
 import com.joma.TEdit.repository.DocumentRepository;
 import com.joma.TEdit.repository.UserRepository;
-import com.joma.TEdit.request.DocumentListRequest;
+import com.joma.TEdit.request.document.DocumentListRequest;
 import com.joma.TEdit.response.document.DocumentResponse;
 import com.joma.TEdit.response.document.DocumentsListResponse;
 import jakarta.persistence.EntityNotFoundException;

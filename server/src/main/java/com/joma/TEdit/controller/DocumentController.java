@@ -1,7 +1,7 @@
 package com.joma.TEdit.controller;
 
 import com.joma.TEdit.dto.document.DocumentDTO;
-import com.joma.TEdit.request.DocumentListRequest;
+import com.joma.TEdit.request.document.DocumentListRequest;
 import com.joma.TEdit.response.document.DocumentResponse;
 import com.joma.TEdit.response.document.DocumentsListResponse;
 import com.joma.TEdit.service.DocumentService;

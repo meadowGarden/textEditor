@@ -1,4 +1,4 @@
-package com.joma.TEdit.request;
+package com.joma.TEdit.request.document;
 
 public class DocumentListRequest {
 

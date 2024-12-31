@@ -4,7 +4,7 @@ import com.joma.TEdit.dto.AppMapper;
 import com.joma.TEdit.dto.user.UserDTO;
 import com.joma.TEdit.entity.User;
 import com.joma.TEdit.repository.UserRepository;
-import com.joma.TEdit.request.UserListRequest;
+import com.joma.TEdit.request.user.UserListRequest;
 import com.joma.TEdit.response.user.UserResponse;
 import com.joma.TEdit.response.user.UsersListResponse;
 import jakarta.persistence.EntityExistsException;

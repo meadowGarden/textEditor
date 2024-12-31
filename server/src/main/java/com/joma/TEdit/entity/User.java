@@ -47,6 +47,14 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    public User(String username, String firstName, String lastName, String password, Role role) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.role = role;
+    }
+
     public void addDocument(Document document) {
         if (documents == null)
             documents = new HashSet<>();

@@ -1,7 +1,7 @@
 package com.joma.TEdit.controller;
 
 import com.joma.TEdit.dto.user.UserDTO;
-import com.joma.TEdit.request.UserListRequest;
+import com.joma.TEdit.request.user.UserListRequest;
 import com.joma.TEdit.response.user.UserResponse;
 import com.joma.TEdit.response.user.UsersListResponse;
 import com.joma.TEdit.service.UserService;

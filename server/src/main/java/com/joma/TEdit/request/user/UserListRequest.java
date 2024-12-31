@@ -1,4 +1,4 @@
-package com.joma.TEdit.request;
+package com.joma.TEdit.request.user;
 
 public class UserListRequest {
     private int pageNumber;
