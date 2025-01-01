@@ -16,3 +16,15 @@ CREATE TABLE IF NOT EXISTS editor.document (
     CONSTRAINT FK_USER_ID FOREIGN KEY (user_id)
         REFERENCES editor.users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS editor.token (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    token VARCHAR(255),
+    token_type VARCHAR(255),
+    is_expired VARCHAR(255),
+    is_revoked VARCHAR(255),
+    user_id INTEGER,
+    PRIMARY KEY (id),
+    CONSTRAINT USER_ID FOREIGN KEY (user_id)
+        REFERENCES editor.users(id) ON DELETE CASCADE
+);

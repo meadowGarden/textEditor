@@ -2,6 +2,7 @@ package com.joma.TEdit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joma.TEdit.security.Role;
+import com.joma.TEdit.token.Token;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,6 +37,9 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<Document> documents;
+
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 
     public User() {
     }

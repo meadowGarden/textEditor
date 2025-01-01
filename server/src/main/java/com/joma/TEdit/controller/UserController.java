@@ -40,7 +40,7 @@ public class UserController {
             @RequestParam(defaultValue = "true") boolean sortAsc
             ) {
         final UserListRequest request = new UserListRequest(
-                pageNumber, pageSize,firstNameContains, lastNameContains, sortBy, sortAsc);
+                pageNumber, pageSize, firstNameContains, lastNameContains, sortBy, sortAsc);
         final UsersListResponse response = userService.getAllUsers(request);
         return ResponseEntity
                 .status(HttpStatus.OK)
