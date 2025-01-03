@@ -1,0 +1,8 @@
+.registrationForm {
+  padding: 2rem;
+  background-color: var(--default-background-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  text-align: center;
+}

@@ -6,6 +6,7 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand href="/">home</Navbar.Brand>
         <Nav className="me-auto">
+          <Nav.Link href="/register">register</Nav.Link>
           <Nav.Link href="/documents">documents</Nav.Link>
           <Nav.Link href="/users">users</Nav.Link>
         </Nav>

@@ -11,6 +11,7 @@ import UserListPage from "./pages/userListPage/UserListPage";
 import DocumentListPage from "./pages/documentListPage/DocumentListPage";
 import DocumentPage from "./pages/documentPage/DocumentPage";
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
+import RegisterPage from "./pages/registerPage/RegisterPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/users" element={<UserListPage />} />
         <Route path="/documents/" element={<DocumentListPage />} />
         <Route path="/documents/:documentID" element={<DocumentPage />} />
