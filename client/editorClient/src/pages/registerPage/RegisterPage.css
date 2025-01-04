@@ -1,3 +1,11 @@
+.registrationPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: var(--default-background-color);
+}
+
 .registrationForm {
   padding: 2rem;
   background-color: var(--default-background-color);
@@ -5,4 +13,10 @@
   grid-template-columns: 1fr;
   gap: 0.5em;
   text-align: center;
+  width: 50%;
+}
+
+.registratioFormSection {
+  display: grid;
+  grid-template-columns: 30% 70%;
 }
