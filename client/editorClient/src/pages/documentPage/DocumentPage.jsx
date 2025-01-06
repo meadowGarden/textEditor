@@ -15,6 +15,7 @@ export default function DocumentPage() {
   const [document, setDocument] = useState();
   const [isTitleInEditMode, setIsTitleInEditMode] = useState(false);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     axios

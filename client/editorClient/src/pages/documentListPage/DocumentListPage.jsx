@@ -22,10 +22,16 @@ export default function DocumentListPage() {
     defaultPaginationSettings
   );
   const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("jwtToken");
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/documents`, { params: paginationSetting })
+      .get(`http://localhost:8080/api/documents`, {
+        params: paginationSetting,
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      })
       .then((response) => {
         setPaginationData(response.data.page);
         setDocuments(response.data.content);

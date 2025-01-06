@@ -20,11 +20,15 @@ export default function UserListPage() {
   const [paginationSettings, setPaginationSettings] = useState(
     defaultPaginatioSettings
   );
+  const jwtToken = localStorage.getItem("jwtToken");
 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/users`, {
         params: paginationSettings,
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
       })
       .then((response) => {
         setUsers(response.data.content);

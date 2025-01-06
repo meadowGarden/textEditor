@@ -1,4 +1,4 @@
-.registrationPage {
+.loginPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   background-color: var(--default-background-color);
 }
 
-.registrationForm {
+.loginForm {
   padding: 2rem;
   background-color: var(--default-background-color);
   display: grid;
@@ -16,7 +16,7 @@
   width: 50%;
 }
 
-.registratioFormSection {
+.loginFormSection {
   display: grid;
   grid-template-columns: 40% 60%;
 }

@@ -1,6 +1,7 @@
 import BasicButton from "../../components/ui/basicButton/BasicButton.jsx";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import "../../styles/pageDesign.css";
 
@@ -13,6 +14,8 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     const newUser = {
       username: data.username,
@@ -23,7 +26,13 @@ export default function RegisterPage() {
 
     axios
       .post(`http://localhost:8080/api/auth/register`, newUser)
-      .then((response) => console.log(response))
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("jwtToken", response.data.token);
+          localStorage.setItem("user", response.data.token);
+          navigate("/documents");
+        }
+      })
       .catch((error) => console.log(error));
   };
 

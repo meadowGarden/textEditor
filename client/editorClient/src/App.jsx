@@ -12,6 +12,7 @@ import DocumentListPage from "./pages/documentListPage/DocumentListPage";
 import DocumentPage from "./pages/documentPage/DocumentPage";
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 import RegisterPage from "./pages/registerPage/RegisterPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/users" element={<UserListPage />} />
         <Route path="/documents/" element={<DocumentListPage />} />
         <Route path="/documents/:documentID" element={<DocumentPage />} />
