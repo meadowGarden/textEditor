@@ -19,7 +19,7 @@ export default function LoginPage() {
   const onSubmit = (data) => {
     const user = {
       username: data.username,
-      password: data.password02,
+      password: data.password,
     };
 
     axios
@@ -52,7 +52,7 @@ export default function LoginPage() {
           <label>password</label>
           <input
             id="password"
-            {...register("password01", {
+            {...register("password", {
               required: {
                 value: true,
                 message: "enter your password",
